@@ -17,13 +17,17 @@ export class UsersComponent implements OnInit {
 
   getUsers(event) {
     this.restService.getUsers().subscribe((data) => {
-      this.users = Array.from(Object.keys(data), k=>data[k]);
-      console.log(this.users);
+      //this.users = Array.from(Object.keys(data), k=> data[k]);
+      this.users = Array.from(Object.values(data));
+      console.log(Object.values(this.users[4])[0]);
     });
   }
 
   getUser(event) {
-    this.user = this.restService.getUser();
+    this.restService.getUser().subscribe((data) => {
+    this.user = Array.from(Object.values(data));
+      console.log(Array.from(Object.values(this.user[0]))[0]);
+    });
   }
 
 }
